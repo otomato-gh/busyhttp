@@ -7,7 +7,9 @@ application = Flask(__name__)
 
 class memBuf:
     buffer = []
-    
+
+#leaving cpu loding on root path for bw compat 
+@application.route("/")    
 @application.route("/cpu")
 def busy_cpu():
     until = time.time() + 1
@@ -17,8 +19,14 @@ def busy_cpu():
 
 @application.route("/memory")
 def busy_memory():
-    buffer += ['A' * MEGABYTE for _ in range(0, 1)]
+    memBuf.buffer += ['A' * MEGABYTE]
     time.sleep(1)
-    return "I've consumed 1 MB of memory.\n"
+    return "I've allocated 1 MB of memory.\n"
 
-
+@application.route("/memfree")
+def free_memory():
+    time.sleep(1)
+    if len(memBuf.buffer) > 0:
+      del memBuf.buffer[len(memBuf.buffer)-1:]
+      return "I've released 1 MB of memory.\n"
+    return "No more memory to release.\n"
