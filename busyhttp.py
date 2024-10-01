@@ -6,16 +6,16 @@ from flask import Flask
 application = Flask(__name__)
 
 class memBuf:
-    buffer = []
+    buffer = ['X' * 50 * MEGABYTE]
 
 #leaving cpu loding on root path for bw compat 
 @application.route("/")    
 @application.route("/cpu")
 def busy_cpu():
-    until = time.time() + 1
+    until = time.time() + 0.5
     while time.time() < until:
         pass
-    return "I've been busy for 1 second.\n"
+    return "I've been busy for 0.5 seconds.\n"
 
 @application.route("/memory")
 def busy_memory():
