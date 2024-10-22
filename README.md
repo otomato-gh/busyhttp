@@ -1,6 +1,7 @@
 # busyhttp.py
 
 This repo provides a simple Flask web application that simulates CPU and memory load for testing purposes.
+This app was originally created by @jpetazzo for [container.training](https://container.training/) and further developed by @antweiss for additional use cases.
 
 ## Routes:
 -     /cpu
