@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: busyhttp
+  name: busyhttp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: busyhttp
+  template:
+    metadata:
+      labels:
+        app: busyhttp
+    spec:
+      containers:
+      - image: otomato/busyhttp:0.2
+        command: ["gunicorn", "busyhttp", "-b", "0.0.0.0:80", "-w", "4"]
+        name: busyhttp
+        resources:
+          limits:
+            memory: 200Mi
+          requests:
+            cpu: "1"
+            memory: 100Mi
