@@ -32,7 +32,7 @@ def busy_cpu_seconds(seconds):
 
 @application.route("/memory/<int:mb>")
 def busy_memory_mb(mb):
-    memBuf.buffer += ['A' * MEGABYTE] * mb
+    memBuf.buffer += ['A' * MEGABYTE for _ in range(mb)]
     time.sleep(1)
     return "I've allocated " + str(mb) + " MB of memory.\n"
 
