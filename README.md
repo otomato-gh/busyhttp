@@ -1,7 +1,9 @@
-# busyhttp.py
+# busyhttp utilities
 
-This repo provides a simple Flask web application that simulates CPU and memory load for testing purposes.
-
+This repo provides simple web applications that simulate CPU and memory
+load for testing purposes. The original implementation in `busyhttp.py`
+uses Flask, and this repository now also includes a Go implementation in
+`busyhttp.go` offering the same functionality.
 This app was originally created by @jpetazzo for [container.training](https://container.training/) and further developed by @antweiss for additional use cases.
 
 ## Routes:
